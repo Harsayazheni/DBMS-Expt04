@@ -59,6 +59,7 @@ FROM orders;
 ![Screenshot 2024-04-24 184101](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/bddf2601-9f12-468b-bdaa-11e0fa9def92)
 
 ### 6.Write a SQL query to find What is the age difference between the youngest and oldest employee in the company.
+![Screenshot 2024-04-24 184313](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/f787636c-0172-440e-bb08-fe3b4ee70a7a)
 
 #### Program
 ```
@@ -66,7 +67,10 @@ SELECT MAX(age) - MIN(age) AS age_difference
 FROM employee;
 ```
 #### Output
+![Screenshot 2024-04-24 184322](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/7324f064-ea6c-4b42-9449-817ca579cc31)
+
 ### 7.Write a SQL query to find the number of employees who are having the same age removing the duplicate values.
+![Screenshot 2024-04-24 184331](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/f1c08458-e0c1-46b6-93ca-43c33872cc6c)
 
 #### Program
 ```
@@ -74,7 +78,10 @@ SELECT COUNT(DISTINCT age) AS COUNT
 FROM employee;
 ```
 #### Output
+![Screenshot 2024-04-24 184339](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/fcb4a60f-153c-4bbf-8d12-b2ddd92ff5bb)
+
 ### 8.Write the SQL query that achieves the grouping of data by age, calculates the minimum income for each age group, and includes only those age groups where the minimum income is less than 1,000,000.
+![Screenshot 2024-04-24 184347](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/8cc19a69-c802-4fcc-956c-d51cdc432c06)
 
 #### Program
 ```
@@ -84,7 +91,10 @@ GROUP BY age
 HAVING MIN(Income) < 1000000;
 ```
 #### Output
+![Screenshot 2024-04-24 184356](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/aa4f7219-59f2-4df3-a6d1-606b80ef2529)
+
 ### 9.Write the SQL query that accomplishes the grouping of data by joining date (jdate), calculates the average work hours for each date, and excludes dates where the average work hour is not less than 10.
+![Screenshot 2024-04-24 184405](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/830e3c82-a1e6-4d63-bc9d-1197e2fde446)
 
 #### Program
 ```SELECT jdate, AVG(workhour) AS "AVG(workhour)"
@@ -93,7 +103,10 @@ GROUP BY jdate
 HAVING "AVG(workhour)" < 10;
 ```
 #### Output
+![Screenshot 2024-04-24 184414](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/ece8b6b9-ed23-4003-832c-6a5fa6dbc874)
+
 ### 10.Write the SQL query that achieves the selection of category and calculates the sum of the product of price and category ID as Revenue for each category from the "products" table, and includes only those products where the total revenue is greater than 25.
+![Screenshot 2024-04-24 184422](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/e2ce4463-53f5-44cb-8292-29ef7f01a9e1)
 
 #### Program
 ```
@@ -103,5 +116,7 @@ GROUP BY category_id
 HAVING SUM(price * category_id) > 25;
 ```
 #### Output
+![Screenshot 2024-04-24 184430](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/d90e0f39-0e96-44b6-90b6-abd9c5f720fe)
+
 ## Result
 Thus , to develop an application with SQL and programming language using database connectivity is successfully done.
