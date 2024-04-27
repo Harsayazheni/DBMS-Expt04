@@ -2,10 +2,76 @@
 
 ## Aim
 To develop an application with SQL and programming language using database connectivity. 
+
+## Theory
+An aggregate function is a function that performs a calculation on a set of values, and returns a single value.
+Aggregate functions are often used with the GROUP BY clause of the SELECT statement. The GROUP BY clause splits the result-set into groups of values and the aggregate function can be used to return a single value for each group.
+The most commonly used SQL aggregate functions are:
+MIN() - returns the smallest value within the selected column
+Syntax: 
+SELECT MIN(column_name)
+FROM table_name
+WHERE condition;
+Example: SELECT MIN (Sal) FROM emp;
+
+
+MAX() - returns the largest value within the selected column
+Syntax: 
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+Example: SELECT MAX (Sal) FROM emp;
+
+
+COUNT() - returns the number of rows in a set
+Syntax: 
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition; 
+Example: SELECT COUNT (Sal) FROM emp;
+
+
+SUM() - returns the total sum of a numerical column
+Syntax: 
+SELECT SUM(column_name)
+FROM table_name
+WHERE condition;
+Example: SELECT SUM (Sal) From emp;
+
+
+AVG() - returns the average value of a numerical column
+	Syntax: 
+	SELECT AVG(column_name)
+FROM table_name
+WHERE condition;
+	Example: Select AVG (10, 15, 30) FROM DUAL; 
+
+
+
+
+GROUP BY: This query is used to group all the records in a relation together for each and every value of a specific key(s) and then display them for a selected set of fields in the relation. 
+Syntax: 
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+ORDER BY column_name(s);
+Example: SQL> SELECT EMPNO, SUM (SALARY) FROM EMP GROUP BY EMPNO; 
+
+
+GROUP BY-HAVING: The HAVING clause was added to SQL because the WHERE keyword could not be used with aggregate functions. The HAVING clause must follow the GROUP BY clause in a query and must also precede the ORDER BY clause if used. 
+Syntax: 
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+HAVING condition
+ORDER BY column_name(s);
+
 ### 1. How many appointments are scheduled for each doctor?
 ![Screenshot 2024-04-24 183943](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/b7a06ed3-217f-425b-b86f-34b63e61e60e)
 
-#### Program
+#### Query
 ```SELECT DoctorID, COUNT(AppointmentID) AS TotalAppointments
 FROM Appointments
 GROUP BY DoctorID;
@@ -16,7 +82,7 @@ GROUP BY DoctorID;
 ### 2.How many appointments are scheduled for each patient?
 ![Screenshot 2024-04-24 184003](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/18fbefba-766d-48cb-8812-f672a4e05c5f)
 
-#### Program
+#### Query
 ```SELECT PatientID, COUNT(AppointmentID) AS TotalAppointments
 FROM Appointments
 GROUP BY PatientID;
@@ -27,7 +93,7 @@ GROUP BY PatientID;
 ### 3.What is the average dosage prescribed for each medication?
 ![Screenshot 2024-04-24 184023](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/34882206-aa3f-432c-8055-06acc1ea28a6)
 
-#### Program
+#### Query
 ```SELECT Medication, AVG(CAST(Dosage AS float)) AS AvgDosage
 FROM Prescriptions
 GROUP BY Medication;
@@ -38,7 +104,7 @@ GROUP BY Medication;
 ### 4.Write a SQL query to find the Fruit with the lowest available quantity.
 ![Screenshot 2024-04-24 184039](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/a8498132-67c1-4fbb-8e19-77b0af13e19d)
 
-#### Program
+#### Query
 ```SELECT name AS fruit_name, inventory AS lowest_quantity
 FROM fruits
 ORDER BY inventory ASC
@@ -51,7 +117,7 @@ LIMIT 1;
 ### 5.Write a SQL query to find the maximum purchase amount.
 ![Screenshot 2024-04-24 184054](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/d192dc73-dfa9-4db5-a549-0e89a3f44229)
 
-#### Program
+#### Query
 ```SELECT MAX(purch_amt) AS MAXIMUM
 FROM orders;
 ```
@@ -61,7 +127,7 @@ FROM orders;
 ### 6.Write a SQL query to find What is the age difference between the youngest and oldest employee in the company.
 ![Screenshot 2024-04-24 184313](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/f787636c-0172-440e-bb08-fe3b4ee70a7a)
 
-#### Program
+#### Query
 ```
 SELECT MAX(age) - MIN(age) AS age_difference
 FROM employee;
@@ -72,7 +138,7 @@ FROM employee;
 ### 7.Write a SQL query to find the number of employees who are having the same age removing the duplicate values.
 ![Screenshot 2024-04-24 184331](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/f1c08458-e0c1-46b6-93ca-43c33872cc6c)
 
-#### Program
+#### Query
 ```
 SELECT COUNT(DISTINCT age) AS COUNT
 FROM employee;
@@ -83,7 +149,7 @@ FROM employee;
 ### 8.Write the SQL query that achieves the grouping of data by age, calculates the minimum income for each age group, and includes only those age groups where the minimum income is less than 1,000,000.
 ![Screenshot 2024-04-24 184347](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/8cc19a69-c802-4fcc-956c-d51cdc432c06)
 
-#### Program
+#### Query
 ```
 SELECT age, MIN(income) AS Income
 FROM employee
@@ -96,7 +162,7 @@ HAVING MIN(Income) < 1000000;
 ### 9.Write the SQL query that accomplishes the grouping of data by joining date (jdate), calculates the average work hours for each date, and excludes dates where the average work hour is not less than 10.
 ![Screenshot 2024-04-24 184405](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/830e3c82-a1e6-4d63-bc9d-1197e2fde446)
 
-#### Program
+#### Query
 ```SELECT jdate, AVG(workhour) AS "AVG(workhour)"
 FROM employee1
 GROUP BY jdate
@@ -108,7 +174,7 @@ HAVING "AVG(workhour)" < 10;
 ### 10.Write the SQL query that achieves the selection of category and calculates the sum of the product of price and category ID as Revenue for each category from the "products" table, and includes only those products where the total revenue is greater than 25.
 ![Screenshot 2024-04-24 184422](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/e2ce4463-53f5-44cb-8292-29ef7f01a9e1)
 
-#### Program
+#### Query
 ```
 SELECT category_id, SUM(price * category_id) AS Revenue
 FROM products
