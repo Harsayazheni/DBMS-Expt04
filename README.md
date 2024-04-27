@@ -1,7 +1,7 @@
 # DBMS-Expt04
 
 ## Aim
-To develop an application with SQL and programming language using database connectivity. 
+To study and implement aggregate functions, group by and having clause with suitable examples.
 
 ## Theory
 An aggregate function is a function that performs a calculation on a set of values, and returns a single value.
@@ -185,4 +185,5 @@ HAVING SUM(price * category_id) > 25;
 ![Screenshot 2024-04-24 184430](https://github.com/Harsayazheni/DBMS-Expt04/assets/118708467/d90e0f39-0e96-44b6-90b6-abd9c5f720fe)
 
 ## Result
-Thus , to develop an application with SQL and programming language using database connectivity is successfully done.
+Thus , To study and implement aggregate functions, group by and having clause with suitable examples.
+
